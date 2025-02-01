@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles de Presse</title>
+    <style>
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #chatbot-window {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #chatbot-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #chatbot-messages {
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        #chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        #chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #chatbot-input button {
+            margin-left: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Articles de Presse</h1>
+
+    <button id="chatbot-button" onclick="toggleChatbot()">💬</button>
+
+    <div id="chatbot-window">
+        <div id="chatbot-header">Chatbot</div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" id="user_input" placeholder="Tapez votre message...">
+            <button onclick="sendMessage()">Envoyer</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChatbot() {
+        var chatbotWindow = document.getElementById('chatbot-window');
+        chatbotWindow.style.display = (chatbotWindow.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function sendMessage() {
+        var user_input = document.getElementById('user_input').value.trim();
+        if (user_input === '') return;
+
+        var messages = document.getElementById('chatbot-messages');
+        messages.innerHTML += `<p><strong>Vous:</strong> ${user_input}</p>`;
+        messages.innerHTML += `<p id="loading"><strong>Bot:</strong> <span class="dots">.</span></p>`;
+        document.getElementById('user_input').value = '';
+        messages.scrollTop = messages.scrollHeight;
+
+        animateDots();
+
+        fetch('/chatbot/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ message: user_input })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('loading').remove();
+            messages.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+            messages.scrollTop = messages.scrollHeight;
+        });
+    }
+
+    function animateDots() {
+        var dots = document.querySelector('.dots');
+        if (!dots) return;
+
+        let count = 1;
+        setInterval(() => {
+            dots.textContent = '.'.repeat(count);
+            count = (count % 3) + 1;
+        }, 500);
+    }
+
+    document.getElementById('user_input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    </script>
+</body>
+</html>

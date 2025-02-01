@@ -1,0 +1,41 @@
+<style>
+    
+</style>
+<div id="Navbar">
+    <div class="row" style="background-color: rgb(10, 10, 10);height: 18px;margin-bottom: 0.1%;margin-left: 12.%;margin-right: 12.%;">
+    </div>
+    
+    <div class="row" style="background-color: rgb(209, 209, 209);height: 0.5px;margin-bottom: 0.1%;margin-left: 12.5%;margin-right: 12.5%; border-radius: 3%;">
+    </div>
+    <div class="nav">
+        <i class="fa fa-home" style="width: 1px;padding: 0px 30px;"></i>
+        <a href="#Actualités"> Actualités</a>
+        <a href="#Politique">Politique</a>
+        <a href="#Sport">Sport</a>
+        <a href="#Culture">Culture</a>
+        <a href="#SCIENCE_&_TECH">Science & Tech</a>
+        <a href="#PLUS_LOIN_ENCORE">Plus loin encore</a>
+        <i class="material-icons">search</i>
+        
+    </div>
+    <div class="row" style="background-color: rgb(10, 10, 10);height: 0.5px;margin-left: 12.5%;margin-right: 12.5%;">
+    </div>
+    <div class="row" style="background-color: rgb(209, 209, 209);height: 3px;margin-bottom: 0.1%;margin-left: 12.5%;margin-right: 12.5%;border-radius: 3%;">
+    </div>
+    
+    
+    
+    <div class="datetime" id="datetime" style="font-size: 10px;margin-left: 15%;"></div>
+    </div>
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const date = now.toLocaleDateString('fr-FR', options);
+        const time = now.toLocaleTimeString('fr-FR');
+        document.getElementById('datetime').innerHTML = `${date} ${time}`;
+    }
+
+    setInterval(updateDateTime, 1000); // Met à jour toutes les secondes
+    updateDateTime(); // Appel initial pour afficher immédiatement la date et l'heure
+</script>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+{%load static%}
+<head>  
+
+    <title>The News Continents</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" type="image/png" href="{% static 'images/Logo_page.ico' %}">
+    <style>
+       #cont_part_1 {
+            width: 1200px; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        #article {
+            width: 200px;
+        }
+        #Main_art img {
+            height: 300px;
+        }
+        #Navbar{}
+        .nav {
+            display: flex;
+            align-items: center;
+            height: 30px;
+            justify-content: center;
+            
+        }
+    
+        .nav a {
+            font-family: 'Georgia', serif;
+            font-size: 13.5px;
+            font-weight: bold;
+            color: #000;
+            padding: 0px 30px;
+            
+        }
+        .nav a:hover {
+            background-color: #0000002b;
+            border-radius: 6%;
+        }
+        #logo_bar{
+            display: flex;
+            background-color: #ffffff;
+        }
+        .container .col-6 img {
+            height: 175px;
+        }
+        .col-sm-3 .container-sm h2{
+            font-size: 20px;
+        }
+        .col-sm-3 .container-sm p{
+            font-size: 13px;
+        }
+        .col-sm-2 .container-sm h2{
+            font-size: 15px;
+        }
+        .col-sm-2 .container-sm p{
+            font-size: 10px;
+        }
+        .container .col-6 {
+            margin-left: 1%;
+            height: 150px;
+            display: flex;
+            margin-bottom: 2%;
+            justify-content: right;
+        }
+        .col-3 div{
+            display:flex;
+            align-items: left;
+        }
+        .col-3 {
+            display:flex;
+            align-items: end;
+            justify-content: left;
+            margin-bottom: 3%;
+        }
+        .col-1{
+            margin-top: auto;
+        }
+        .body
+        {
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-image: url('{% static "images/bg_body.jpg" %}');
+        }
+        @media (max-width: 768px) {
+            .nav {
+                text-align: center;
+            }
+            .navbar {
+                border: none;
+            }
+        }
+        /* Responsive: Gestion des colonnes */
+        @media (max-width: 992px) { /* Taille moyenne (lg) */
+            #left_coll_1, #right_coll1 {
+                display: none; /* Cache les colonnes gauche et droite */
+            }
+
+            #center_coll_1 {
+                flex: 0 0 100%; /* La colonne centrale occupe 100% de l'espace */
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) { /* Taille petite (md) */
+            #left_coll_1, #right_coll1 {
+                display: flex; /* Ré-affiche les colonnes gauche et droite */
+                flex: 0 0 50%; /* Les colonnes gauche et droite occupent chacune 50% */
+                max-width: 50%; /* Ajustement de la largeur maximale */
+            }
+
+            #center_coll_1 {
+                flex: 0 0 100%; /* La colonne centrale occupe 100% initialement */
+                max-width: 100%;
+            }
+
+            h2, h5, p {
+                font-size: 0.9em; /* Ajustement de la taille du texte */
+            }
+
+            #Main_art img {
+                height: 250px; /* Réduction de la hauteur des images */
+            }
+        }
+    </style>
+    <style>
+        #cont_part_1 {
+             width: 1200px; 
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: space-around;
+         }
+         #article {
+             width: 200px;
+         }
+         #Main_art img {
+             height: 300px;
+         }
+         #Navbar{}
+         .nav {
+             display: flex;
+             align-items: center;
+             height: 30px;
+             justify-content: center;
+             
+         }
+     
+         .nav a {
+             font-family: 'Georgia', serif;
+             font-size: 13.5px;
+             font-weight: bold;
+             color: #000;
+             padding: 0px 30px;
+             
+         }
+         .nav a:hover {
+             background-color: #0000002b;
+             border-radius: 6%;
+         }
+         #logo_bar{
+             display: flex;
+             background-color: #ffffff;
+         }
+         .container .col-6 img {
+             height: 200px;
+         }
+         .col-sm-3 .container-sm h2{
+             font-size: 20px;
+         }
+         .col-sm-3 .container-sm p{
+             font-size: 13px;
+         }
+         .col-sm-2 .container-sm h2{
+             font-size: 15px;
+         }
+         .col-sm-2 .container-sm p{
+             font-size: 10px;
+         }
+         .container .col-6 {
+             margin-left: 1%;
+             height: 150px;
+             display: flex;
+             margin-bottom: 2%;
+             justify-content: right;
+         }
+         .col-3 div{
+             display:flex;
+             align-items: left;
+         }
+         .col-3 {
+             display:flex;
+             align-items: end;
+             justify-content: left;
+             margin-bottom: 3%;
+         }
+         .col-1{
+             margin-top: auto;
+         }
+         .body
+         {
+             background-size: cover;
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-image: url('{% static "images/bg_body.jpg" %}');
+         }
+         @media (max-width: 768px) {
+             .nav {
+                 text-align: center;
+             }
+             .navbar {
+                 border: none;
+             }
+         }
+         /* Responsive: Gestion des colonnes */
+         @media (max-width: 992px) { /* Taille moyenne (lg) */
+             #left_coll_1, #right_coll1 {
+                 display: none; /* Cache les colonnes gauche et droite */
+             }
+ 
+             #center_coll_1 {
+                 flex: 0 0 100%; /* La colonne centrale occupe 100% de l'espace */
+                 max-width: 100%;
+             }
+         }
+ 
+         @media (max-width: 768px) { /* Taille petite (md) */
+             #left_coll_1, #right_coll1 {
+                 display: flex; /* Ré-affiche les colonnes gauche et droite */
+                 flex: 0 0 50%; /* Les colonnes gauche et droite occupent chacune 50% */
+                 max-width: 50%; /* Ajustement de la largeur maximale */
+             }
+ 
+             #center_coll_1 {
+                 flex: 0 0 100%; /* La colonne centrale occupe 100% initialement */
+                 max-width: 100%;
+             }
+ 
+             h2, h5, p {
+                 font-size: 0.9em; /* Ajustement de la taille du texte */
+             }
+ 
+             #Main_art img {
+                 height: 250px; /* Réduction de la hauteur des images */
+             }
+         }
+         
+     </style>
+</head>
+<div id="Header">
+{% include 'Logo_bar_2.html'%}
+{% include 'navbar.html'%}
+</div>
+<body>
+    {%include 'part4.html'%}
+    {%include 'part5.html'%}
+    {%include 'chatbot.html'%}
+</body>

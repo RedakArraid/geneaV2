@@ -1,0 +1,84 @@
+
+{%load static%}
+<div style="margin-top: 1%;">
+    
+<div>
+    
+    <h1 style="margin-bottom: 1.5%;margin-left: 2%;"> A lire également :</h1>
+    
+    <div>
+        
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+                
+                {% for art in cached_data|slice:":6" %}
+                <div class="col-sm-2" id="left_coll_2">
+                    <div class="container-sm">
+                        
+                        <div style="display: flex; align-items: first baseline; justify-items: first baseline;">
+                            <img src="{% static 'images/TNC.png' %}" alt="Logo" class="logo" style="height: 12.5px;">
+                            <h2>
+                                <b>
+                                    <a href="{% url 'article_detail' art.id %}" style="text-decoration: none; color: black;">
+                                        {{ art.title }}
+                                    </a>
+                                </b>
+                            </h2>
+                        </div>
+                        {% if art.urlToImage %}
+                            <img src="{{ art.urlToImage }}" alt="{{ art.title }}" class="img-fluid">
+                        {% else %}
+                            <div class="fakeimg">Fake Image</div>
+                        {% endif %}
+                    </div>
+                    <div class="row" style="background-color: rgba(146, 146, 146, 0.551); height: 0.5px; margin-bottom: 2%; margin-left: 10%; margin-right: 10%;"></div>
+                    
+                </div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+                
+                {% for art in cached_data|slice:"21:27" %}
+                <div class="col-sm-2" id="left_coll_2">
+                    <div class="container-sm">
+                        
+                        <div style="display: flex; align-items: first baseline; justify-items: first baseline;">
+                            <img src="{% static 'images/TNC.png' %}" alt="Logo" class="logo" style="height: 12.5px;">
+                            <h2>
+                                <b>
+                                    <a href="{% url 'article_detail' art.id %}" style="text-decoration: none; color: black;">
+                                        {{ art.title }}
+                                    </a>
+                                </b>
+                            </h2>
+                        </div>
+                        {% if art.urlToImage %}
+                            <img src="{{ art.urlToImage }}" alt="{{ art.title }}" class="img-fluid">
+                        {% else %}
+                            <div class="fakeimg">Fake Image</div>
+                        {% endif %}
+                    </div>
+                    <div class="row" style="background-color: rgba(146, 146, 146, 0.551); height: 0.5px; margin-bottom: 2%; margin-left: 10%; margin-right: 10%;"></div>
+                    
+                </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="mt-1 p-4 bg-dark text-white text-center">
+        <p>Footer</p>
+    </div>
+</div>

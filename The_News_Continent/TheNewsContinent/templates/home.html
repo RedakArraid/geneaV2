@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+{%load static%}
+<head>  
+
+    <title>The News Continents</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" type="image/png" href="{% static 'images/Logo_page.ico' %}">
+    <style>
+       
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: hwb(0 99% 0%);
+            
+        }
+    
+        .nav a {
+            color: rgb(8, 8, 8);
+            text-decoration:solid;
+            font-size: 13.5px;
+            padding: 0px 30px;
+        }
+        .nav a:hover {
+            background-color: #0000002b;
+            border-radius: 6%;
+        }
+        #logo_bar{
+            display: flex;
+            background-color: #ffffff;
+        }
+        .container .col-6 img {
+            height: 175px;
+        }
+        .container .col-6 {
+            margin-left: 1%;
+            height: 150px;
+            display: flex;
+            margin-bottom: 2%;
+            justify-content: right;
+        }
+        .col-3 div{
+            display:flex;
+            align-items: left;
+        }
+        .col-3 {
+            display:flex;
+            align-items: end;
+            justify-content: left;
+            margin-bottom: 3%;
+        }
+        .col-1{
+            margin-top: auto;
+        }
+        .body
+        {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-image: url('{% static "images/bg_body.jpg" %}');
+        }
+    </style>
+</head>
+<body>
+    <div>
+        {%for item in art_actu%}
+             
+        {%endfor%}
+    </div>
+    <div style=>
+{% include 'Logo_bar.html'%}
+
+{% include 'navbar.html'%}
+
+{% include 'part1.html'%}
+{% include 'part2.html'%}
+{% include 'part3.html'%}
+</div>
+</body>
+</html>
