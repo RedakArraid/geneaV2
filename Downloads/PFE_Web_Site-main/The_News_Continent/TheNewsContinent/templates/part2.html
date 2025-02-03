@@ -1,0 +1,76 @@
+{% load static %}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #cont_part_1
+        {
+            width: 1200px; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        #article
+        {
+            width: 200px;
+        }
+        
+        #Main_art img
+        {
+            
+            height: 350px;
+        }
+    </style>
+</head>
+<div class="container mt-5" id="cont_part_1" >
+  <div class="row" >
+    <div class="col-sm-3" id="left_coll_1">
+        <div class="container-sm">
+            <h2><b>Tile of the article</b></h2>
+            <h5>Photo of the article:</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        </div>
+        <div class="container-sm">
+            <h2><b>Tile of the article</b></h2>
+            <h5>Photo of the article:</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        </div>
+        <div class="container-sm">
+            <h2><b>Tile of the article</b></h2>
+            <h5>Photo of the article:</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>D'un autre côté, en Europe, les livraisons de gaz russe via l'Ukraine ont cessé définitivement, marquant un tournant historique dans les relations énergétiques entre la Russie et l'Union européenne1. Cette situation met l'UE sous pression pour trouver des alternatives énergétiques durables.</p>
+        </div>
+    </div>
+    <div class="col-sm-6" id="center_coll_1">
+        
+        <div class="container-sm" id="Main_art">
+            <img src="{% static 'images/img3.jpg' %}" alt="Logo" class="logo">
+           </div>
+     </div>
+    <div class="col-sm-3" id="right_coll1">
+        <div class="container-sm">
+            <h2><b>Tile of the article</b></h2>
+            <h5>Photo of the article:</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        </div>
+        <div class="container-sm">
+            <h2><b>Tile of the article</b></h2>
+            <h5>Photo of the article:</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        </div>
+        <div class="container-sm" id="cont_last">
+            <h2><b>Tile of the article</b></h2>
+            <h5>Photo of the article:</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>D'un autre côté, en Europe, les livraisons de gaz russe via l'Ukraine ont cessé définitivement, marquant un tournant historique dans les relations énergétiques entre la Russie et l'Union européenne1. Cette situation met l'UE sous pression pour trouver des alternatives énergétiques durables.</p>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="row" style="background-color: rgb(10, 10, 10);height: 0.5px;margin-bottom: 2%;margin-left: 10%;margin-right: 10%;">
+</div>

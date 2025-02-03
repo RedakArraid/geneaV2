@@ -1,0 +1,140 @@
+{%load static%}
+<div id="articles-container">
+       
+    <div class="container mt-5" id="cont_part_1">
+        <div class="row">
+            <!-- Colonne gauche -->
+            <div class="col-sm-3" id="left_coll_1">
+                {% for art in article|slice:":3" %}
+                <div class="container-sm">
+                    
+                    <div style="display: flex; align-items: first baseline; justify-items: first baseline;">
+                        <img src="{% static 'images/TNC.png' %}" alt="Logo" class="logo" style="height: 12.5px;">
+                        <h2>
+                            <b>
+                                <a href="{% url 'article_detail' art.id %}" style="text-decoration: none; color: black;">
+                                    {{ art.title }}
+                                </a>
+                            </b>
+                        </h2>
+                    </div>
+                    {% if art.urlToImage %}
+                        <img src="{{ art.urlToImage }}" alt="{{ art.title }}" class="img-fluid">
+                    {% else %}
+                        <div class="fakeimg">Fake Image</div>
+                    {% endif %}
+                    <p>{{ art.description }}</p>
+                </div>
+                <div class="row" style="background-color: rgba(146, 146, 146, 0.551); height: 0.5px; margin-bottom: 2%; margin-left: 10%; margin-right: 10%;"></div>
+                {% endfor %}
+            </div>
+
+            <!-- Article principal (au centre) -->
+            <div class="col-sm-6" id="center_coll_1">
+                <div class="row">
+                <div class="container-sm" id="Main_art">
+                    
+                    {% for art in article|slice:"5:6" %}
+                    <div class="container-sm">
+                        
+                        <div style="display: flex; align-items: first baseline; justify-items: first baseline;">
+                            <img src="{% static 'images/TNC.png' %}" alt="Logo" class="logo" style="height: 12.5px;">
+                            <h2>
+                                <b>
+                                    <a href="{% url 'article_detail' art.id %}" style="text-decoration: none; color: black;">
+                                        {{ art.title }}
+                                    </a>
+                                </b>
+                            </h2>
+                        </div>
+                        {% if art.urlToImage %}
+                            <img src="{{ art.urlToImage }}" alt="{{ art.title }}" class="img-fluid">
+                        {% else %}
+                            <div class="fakeimg">Fake Image</div>
+                        {% endif %}
+                        <p>{{ art.description }}</p>
+                    </div>
+                    <div class="row" style="background-color: rgba(146, 146, 146, 0.551); height: 0.5px; margin-bottom: 2%; margin-left: 10%; margin-right: 10%;"></div>
+                    {% endfor %}
+                </div>
+            </div>
+                <div class="row">
+                    {% for art in article|slice:"3:4" %}
+                    <div class="container-sm" >
+                        
+                        <div style="display: flex; align-items: first baseline; justify-items: first baseline;">
+                            <img src="{% static 'images/TNC.png' %}" alt="Logo" class="logo" style="height: 12.5px;">
+                            <h2>
+                                <b>
+                                    <a href="{% url 'article_detail' art.id %}" style="text-decoration: none; color: black;">
+                                        {{ art.title }}
+                                    </a>
+                                </b>
+                            </h2>
+                        </div>
+                        {% if art.urlToImage %}
+                            <img src="{{ art.urlToImage }}" alt="{{ art.title }}" class="img-fluid">
+                        {% else %}
+                            <div class="fakeimg">Fake Image</div>
+                        {% endif %}
+                        <p>{{ art.description }}</p>
+                    </div>
+                    <div class="row" style="background-color: rgba(146, 146, 146, 0.551); height: 0.5px; margin-bottom: 2%; margin-left: 10%; margin-right: 10%;"></div>
+                    {% endfor %}
+                </div>
+           
+        </div>
+            <!-- Colonne droite -->
+            <div class="col-sm-3" id="right_coll1">
+                {% for art in article|slice:"13:16" %}
+                <div class="container-sm">
+                    
+                    <div style="display: flex; align-items: first baseline; justify-items: first baseline;">
+                        <img src="{% static 'images/TNC.png' %}" alt="Logo" class="logo" style="height: 12.5px;">
+                        <h2>
+                            <b>
+                                <a href="{% url 'article_detail' art.id %}" style="text-decoration: none; color: black;">
+                                    {{ art.title }}
+                                </a>
+                            </b>
+                        </h2>
+                    </div>
+                    {% if art.urlToImage %}
+                        <img src="{{ art.urlToImage }}" alt="{{ art.title }}" class="img-fluid">
+                    {% else %}
+                        <div class="fakeimg">Fake Image</div>
+                    {% endif %}
+                    <p>{{ art.description }}</p>
+                </div>
+                <div class="row" style="background-color: rgba(146, 146, 146, 0.551); height: 0.5px; margin-bottom: 2%; margin-left: 10%; margin-right: 10%;"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color: rgb(10, 10, 10);height: 0.5px;margin-bottom: 1%;margin-left: 10%;margin-right: 10%;">
+    </div>
+    <!-- Section articles en bas -->
+    <div class="container mt-5" id="cont_part_1">
+        <div class="row">
+            {% for art in article|slice:"6:12" %}
+            <div class="col-sm-2" id="left_coll_1">
+                <div class="container-sm">
+                    <div style="display: flex; align-items: first baseline; justify-items: first baseline;">
+                        <img src="{% static 'images/TNC.png' %}" alt="Logo" class="logo" style="height: 12.5px;">
+                        <h2>
+                            <b>
+                                <a href="{% url 'article_detail' art.id %}" style="text-decoration: none; color: black;">
+                                    {{ art.title }}
+                                </a>
+                            </b>
+                        </h2>
+                    </div>
+                   
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Ligne de séparation -->
+    <div class="row" style="background-color: rgb(10, 10, 10); height: 0.5px; margin-top: 1%; margin-left: 10%; margin-right: 10%;"></div>
