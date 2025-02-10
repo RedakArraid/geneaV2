@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Votre panier</h2>
+    <ul>
+        {% for order in orders %}
+            <li>
+                <h2>{{ order.product.name }}</h2>
+                {% if order.product.thumbnail %}
+                    <img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}" style="max-width: 250px;">
+                    <p>{{ order.quantity }} dans le panier</p>
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <a href="{{ order.product.get_absolute_url }}">Voir article</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

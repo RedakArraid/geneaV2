@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayamarket</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Bayamarket</h1>
+    </header>
+    <main>
+        {% if user.is_authenticated %}
+            {{ user.username }}
+            <a href="{% url 'logout' %}">Déconnexion</a>
+        {% else %}
+            <a href="{% url 'login' %}">Connexion</a>
+            <a href="{% url 'signup' %}">S'inscrire</a>
+        {% endif %}
+
+        <!-- Main content goes here -->
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Bayamarket. All rights reserved.</p>
+    </footer>
+</body>
+</html>
