@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String       @id @default(uuid())
+  email         String       @unique
+  password      String
+  name          String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  trees         FamilyTree[]
+}
+
+model FamilyTree {
+  id          String        @id @default(uuid())
+  name        String
+  description String?
+  isPublic    Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  ownerId     String
+  owner       User          @relation(fields: [ownerId], references: [id])
+  people      Person[]
+  nodes       NodePosition[]
+  edges       Edge[]
+}
+
+model Person {
+  id            String     @id @default(uuid())
+  firstName     String
+  lastName      String
+  birthDate     DateTime?
+  birthPlace    String?
+  deathDate     DateTime?
+  occupation    String?
+  biography     String?
+  gender        String?     // "male", "female", "other"
+  photoUrl      String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  treeId        String
+  tree          FamilyTree @relation(fields: [treeId], references: [id], onDelete: Cascade)
+  sourceRelations      Relationship[] @relation("SourceRelations")
+  targetRelations      Relationship[] @relation("TargetRelations")
+}
+
+model Relationship {
+  id          String     @id @default(uuid())
+  type        String     // "parent", "child", "spouse", "sibling"
+  sourceId    String
+  source      Person     @relation("SourceRelations", fields: [sourceId], references: [id], onDelete: Cascade)
+  targetId    String
+  target      Person     @relation("TargetRelations", fields: [targetId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+// Pour stocker les positions des nœuds dans ReactFlow
+model NodePosition {
+  id          String     @id @default(uuid())
+  nodeId      String     // ID de la personne
+  x           Float
+  y           Float
+  treeId      String
+  tree        FamilyTree @relation(fields: [treeId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+// Pour stocker les arêtes dans ReactFlow
+model Edge {
+  id            String     @id @default(uuid())
+  source        String
+  target        String
+  type          String?
+  sourceHandle  String?
+  targetHandle  String?
+  data          Json?      // Pour stocker des métadonnées supplémentaires
+  treeId        String
+  tree          FamilyTree @relation(fields: [treeId], references: [id], onDelete: Cascade)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
